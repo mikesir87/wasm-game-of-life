@@ -1,0 +1,15 @@
+services:
+  wasm-build:
+    build:
+      context: ./
+      target: wasm-dev
+    volumes:
+      - ./:/usr/local/app
+  web:
+    build:
+      context: ./
+      target: web-dev
+    volumes:
+      - ./:/usr/local/app
+    ports:
+      - 8090:8090

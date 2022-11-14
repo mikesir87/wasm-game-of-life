@@ -9,7 +9,18 @@
 
 Try it out at <https://wasm-game-of-life.shalzz.now.sh>!
 
-## Run
+## Run with Docker
+
+If you have Docker installed, you can run the application by using Docker Compose.
+
+```
+docker compose up -d
+```
+
+After it starts, the application will be available at [http://localhost:8090](http://localhost:8090). Note that it may take a moment for the first launch as the initial Rust compile may take some time. You can view the logs at `docker compose logs -f` to see the status.
+
+
+## Run with Rust toolchain
 
 Build the webassembly module with `wasm-pack build`
 
@@ -26,7 +37,22 @@ npm run start
 
 Open the webpage at http://localhost:808
 
-## Build 
+## Build with Docker
+
+You can build a container image using the provided Dockerfile.
+
+```
+docker build -t game-of-life .
+```
+
+The final image is based on nginx, so runs on port 80. The following command will start a new container using the built image:
+
+```
+docker run --rm -tip 8080:80 game-of-life
+```
+
+
+## Build with Rust toolchain
 
 ### 🛠️ Build with `wasm-pack build`
 
